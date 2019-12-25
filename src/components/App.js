@@ -5,6 +5,7 @@ import Dashboard from './Dashboard';
 import LoadingBar from 'react-redux-loading';
 import Login from './Login';
 import { Container, Header, List } from "semantic-ui-react";
+import NavMenu from './NavMenu';
 
 class App extends Component {
   componentDidMount() {
@@ -14,12 +15,11 @@ class App extends Component {
   render() {
     return (
         <Fragment>
-          <LoadingBar />
           <div className='container'>
-            {this.props.useNotLogged === true
+            {this.props.userNotLogged === true
               ? <Login />
               : <div>
-                <Dashboard />
+                <NavMenu />
               </div>}
           </div>
         </Fragment>
@@ -29,7 +29,7 @@ class App extends Component {
 
 function mapStateToProps({ authedUser }) {
   return {
-    useNotLogged: authedUser === ''
+    userNotLogged: authedUser === null
   }
 }
 

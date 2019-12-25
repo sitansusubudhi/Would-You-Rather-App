@@ -47,10 +47,10 @@ class Login extends Component {
 
                 <Grid.Column style={{ maxWidth: 500 }}>
                     <Header 
-                        as='h2' 
+                        as='h3' 
                         color='teal' 
                         textAlign='center'>
-                        <Message size='small'>
+                        <Message size='large'>
                             Welcome to the Would You Rather App
                         </Message>
                     </Header>
@@ -67,7 +67,7 @@ class Login extends Component {
                                 />
                             </Form.Field>
                             <Button 
-                                color='teal' 
+                                color='black' 
                                 fluid size='large'
                                 disabled={value === ''} >
                                 Login
