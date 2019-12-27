@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { Menu, Segment } from 'semantic-ui-react';
-import Dashboard from './Dashboard';
 
 class NavMenu extends Component {
     state = { activeItem: 'home' }
@@ -38,8 +37,6 @@ class NavMenu extends Component {
                         </Menu.Menu>
                     </Menu>
                 </Segment>
-
-                <Dashboard />
             </Fragment>
         )
     }
