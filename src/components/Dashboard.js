@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Tab, Header, Message } from 'semantic-ui-react';
+import { Tab } from 'semantic-ui-react';
 import UnansweredQs from './UnansweredQs';
 import AnsweredQs from './AnsweredQs';
 
@@ -21,14 +21,6 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <Header
-          as='h3'
-          color='teal'
-          textAlign='center'>
-          <Message size='large'>
-            Welcome {users[authedUser].name}
-          </Message>
-        </Header>
         <Tab
           menu={{ fluid: true, pointing: true, vertical: true, tabular: true }}
           panes={panes}
