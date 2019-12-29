@@ -31,6 +31,17 @@ let users = {
       "6ni6ok3ym7mf1p33lnez": 'optionTwo'
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+  },
+  sksubudhi: {
+    id: 'sksubudhi',
+    name: 'Sitansu Subudhi',
+    avatarURL: '/images/rhaul-v-alva-jCM48W7y6Y8-unsplash.jpg',
+    answers: {
+      "8xf0y6ziyjabvozdd253nd": 'optionOne',
+      "loxhs1bqm25b708cmbf3g": 'optionTwo',
+      "6ni6ok3ym7mf1p33lnez": 'optionTwo'
+    },
+    questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
   }
 };
 
