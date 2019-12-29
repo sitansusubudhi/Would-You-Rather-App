@@ -10,7 +10,7 @@ const UnansweredQs = (props) => {
           <ul className='dashboard-list'>
             {unansweredQuestions.map((id) => (
               <li key={id}>
-                  <Question id={id} />
+                  <Question id={id} answered={false} />
               </li>
             ))}
           </ul>

@@ -17,8 +17,8 @@ class Question extends Component {
             <Segment.Group>
                 <Segment>
                     <Header as='h3'>
-                        {name} asks: 
-                    </Header> 
+                        {name} asks:
+                    </Header>
                 </Segment>
                 <Segment>
                     <Item.Group divided>
@@ -27,13 +27,26 @@ class Question extends Component {
                             <Item.Content verticalAlign='middle'>
                                 <Item.Header>Would you rather</Item.Header>
                                 <Item.Description>{optionOne.text} or ...</Item.Description>
-                                <Item.Extra>
-                                    <Button color='black' floated='right'>
-                                        View Poll
-                                        <Icon name='right chevron' />
-                                    </Button>
-                                    <Label>{id}</Label>
-                                </Item.Extra>
+                                {this.props.answered === true
+                                    ? (
+                                        <Item.Extra>
+                                            <Button color='green' floated='right'>
+                                                Show Poll Results
+                                               <Icon name='right chevron' />
+                                            </Button>
+                                            <Label>{id}</Label>
+                                        </Item.Extra>
+                                    )
+                                    : (
+                                        <Item.Extra>
+                                            <Button color='black' floated='right'>
+                                                View Poll
+                                            <Icon name='right chevron' />
+                                            </Button>
+                                            <Label>{id}</Label>
+                                        </Item.Extra>
+                                    )
+                                }
                             </Item.Content>
                         </Item>
                     </Item.Group>
