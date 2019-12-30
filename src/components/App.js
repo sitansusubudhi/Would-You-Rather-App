@@ -5,6 +5,7 @@ import Dashboard from './Dashboard';
 import Login from './Login';
 import NavMenu from './NavMenu';
 import QuestionPage from './QuestionPage';
+import ResultPage from './ResultPage';
 import Leaderboard from './Leaderboard';
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
             ? <Login />
             : <div>
               <NavMenu />
-              <Leaderboard />
+              <ResultPage match={{params: {id: '6ni6ok3ym7mf1p33lnez'}}}/>
             </div>}
         </div>
       </Fragment>

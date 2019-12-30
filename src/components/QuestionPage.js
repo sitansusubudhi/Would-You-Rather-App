@@ -45,7 +45,6 @@ class QuestionPage extends Component {
                             <Item.Image src={avatarURL} />
 
                             <Item.Content verticalAlign='middle'>
-                                {/* <Item.Header textAlign='center'>Would you rather .. </Item.Header> */}
                                 <Segment textAlign='center'>
                                     <Header as='h3'>Would you rather .. </Header>
 
@@ -73,7 +72,9 @@ class QuestionPage extends Component {
     }
 }
 
-function mapStateToProps({ users, questions }, { id }) {
+function mapStateToProps({ users, questions }, props) {
+
+    const { id } = props.match.params
     const question = questions[id];
     const user = users[question.author];
 
