@@ -8,6 +8,7 @@ import QuestionPage from './QuestionPage';
 import ResultPage from './ResultPage';
 import Leaderboard from './Leaderboard';
 import NewPoll from './NewPoll';
+import NoMatchPage from './NoMatchPage';
 
 class App extends Component {
   componentDidMount() {
@@ -21,12 +22,13 @@ class App extends Component {
           {this.props.userNotLogged === true
             ? <Login />
             : <div>
-              <NavMenu />
+              {/* <NavMenu /> */}
               {/* <Dashboard /> */}
               {/* <QuestionPage match={{params: {id: '6ni6ok3ym7mf1p33lnez'}}}/> */}
               {/* <ResultPage match={{params: {id: '6ni6ok3ym7mf1p33lnez'}}}/> */}
               {/* <Leaderboard /> */}
-              <NewPoll />
+              {/* <NewPoll /> */}
+              <NoMatchPage />
             </div>}
         </div>
       </Fragment>
