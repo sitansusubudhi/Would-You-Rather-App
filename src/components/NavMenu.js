@@ -30,19 +30,16 @@ class NavMenu extends Component {
                     <Menu inverted pointing secondary>
                         <Menu.Item
                             name='home'
-                            active={activeItem === 'home'}
                             as={NavLink} to="/" exact
                             onClick={this.handleItemClick}
                         />
                         <Menu.Item
                             name='new poll'
-                            active={activeItem === 'new poll'}
                             as={NavLink} to="/add"
                             onClick={this.handleItemClick}
                         />
                         <Menu.Item
                             name='leaderboard'
-                            active={activeItem === 'leaderboard'}
                             as={NavLink} to="/leaderboard"
                             onClick={this.handleItemClick}
                         />
