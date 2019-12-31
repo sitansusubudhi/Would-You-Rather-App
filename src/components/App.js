@@ -7,6 +7,7 @@ import NavMenu from './NavMenu';
 import QuestionPage from './QuestionPage';
 import ResultPage from './ResultPage';
 import Leaderboard from './Leaderboard';
+import NewPoll from './NewPoll';
 
 class App extends Component {
   componentDidMount() {
@@ -21,7 +22,11 @@ class App extends Component {
             ? <Login />
             : <div>
               <NavMenu />
-              <ResultPage match={{params: {id: '6ni6ok3ym7mf1p33lnez'}}}/>
+              {/* <Dashboard /> */}
+              {/* <QuestionPage match={{params: {id: '6ni6ok3ym7mf1p33lnez'}}}/> */}
+              {/* <ResultPage match={{params: {id: '6ni6ok3ym7mf1p33lnez'}}}/> */}
+              {/* <Leaderboard /> */}
+              <NewPoll />
             </div>}
         </div>
       </Fragment>
