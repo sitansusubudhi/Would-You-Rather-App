@@ -83,10 +83,9 @@ class ResultPage extends Component {
     }
 }
 
-function mapStateToProps({ authedUser, users, questions }, props) {
+function mapStateToProps({ authedUser, users, questions }, { id }) {
 
     const loggedInUser = users[authedUser];
-    const { id } = props.match.params;
     const question = questions[id];
     const optionOneVotes = question.optionOne.votes.length;
     const optionTwoVotes = question.optionTwo.votes.length;

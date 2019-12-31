@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Item, Image, Label, Segment, Statistic, Table } from 'semantic-ui-react';
+import { Item, Label, Segment, Table } from 'semantic-ui-react';
 
 class Leaderboard extends Component {
 

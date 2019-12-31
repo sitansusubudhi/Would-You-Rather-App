@@ -1,23 +1,29 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { Image, Menu, Segment } from 'semantic-ui-react';
 import { setAuthedUser } from '../actions/authedUser';
+import { Redirect, withRouter } from 'react-router-dom';
 
 class NavMenu extends Component {
-    state = { activeItem: 'home' }
+    state = { activeItem: '' }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
     handleAuthUserLogout = e => {
         e.preventDefault();
         this.props.dispatch(setAuthedUser(null));
+        this.props.history.push('/');
     };
 
     render() {
         const { activeItem } = this.state;
         const { authedUser, users } = this.props;
-        const greetings = `Hello, ${users[authedUser].name}`;
-
+        
+        if (!authedUser) {
+            return <Redirect to='/' />
+        }
+        
         return (
             <Fragment>
                 <Segment inverted>
@@ -25,16 +31,19 @@ class NavMenu extends Component {
                         <Menu.Item
                             name='home'
                             active={activeItem === 'home'}
+                            as={NavLink} to="/" exact
                             onClick={this.handleItemClick}
                         />
                         <Menu.Item
                             name='new poll'
                             active={activeItem === 'new poll'}
+                            as={NavLink} to="/add"
                             onClick={this.handleItemClick}
                         />
                         <Menu.Item
                             name='leaderboard'
                             active={activeItem === 'leaderboard'}
+                            as={NavLink} to="/leaderboard"
                             onClick={this.handleItemClick}
                         />
                         <Menu.Menu position='right'>
@@ -64,4 +73,4 @@ function mapStateToProps({ authedUser, users }) {
     };
 }
 
-export default connect(mapStateToProps)(NavMenu);
+export default withRouter(connect(mapStateToProps)(NavMenu));

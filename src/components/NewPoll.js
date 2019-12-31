@@ -31,8 +31,6 @@ class NewPoll extends Component {
     render() {
 
         const { optionOneValue, optionTwoValue } = this.state;
-        console.log('render 1 ' + optionOneValue);
-        console.log('render 2 ' + optionTwoValue);
         return (
             <Segment attached>
                 <Message

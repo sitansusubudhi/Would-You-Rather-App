@@ -3,11 +3,16 @@ import { connect } from 'react-redux';
 import { Tab } from 'semantic-ui-react';
 import UnansweredQs from './UnansweredQs';
 import AnsweredQs from './AnsweredQs';
+import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
   render() {
     const { authedUser, users, questions } = this.props;
-
+   
+    if (!authedUser) {
+      return <Redirect to='/' />
+    }
+    
     const answeredQuestions = Object.keys(users[authedUser].answers);
     const unansweredQuestions = questions.filter(question => answeredQuestions.indexOf(question) === -1);
     // console.log('Questions in Dashboard' , questions);

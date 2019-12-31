@@ -19,10 +19,8 @@ class Login extends Component {
         e.preventDefault()
 
         const { value } = this.state
-        const { dispatch } = this.props
-
+        const { dispatch, users } = this.props
         dispatch(setAuthedUser(value))
-        
     }
 
     render() {
@@ -86,4 +84,4 @@ function mapStateToProps({ users }) {
     }
 }
 
-export default connect(mapStateToProps)(Login)
+export default connect(mapStateToProps)(Login);

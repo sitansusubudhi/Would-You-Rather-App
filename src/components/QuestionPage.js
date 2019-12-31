@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Divider, Header, Icon, Item, Label, Segment } from 'semantic-ui-react';
+import { Button, Divider, Header, Icon, Item, Segment } from 'semantic-ui-react';
+import ResultPage from './ResultPage';
 
 class QuestionPage extends Component {
     state = {
@@ -24,13 +25,17 @@ class QuestionPage extends Component {
     render() {
 
         const { optionOneActive, optionTwoActive } = this.state;
-        const { user, question } = this.props;
+        const { user, question, loggedInUser } = this.props;
         if (question === null) {
             return <p>This question doesn't exist</p>
         }
 
         const { author, timestamp, id, optionOne, optionTwo } = question;
         const { name, avatarURL } = user;
+
+        if (id in loggedInUser.answers) {
+            return <ResultPage id={id} />
+        }
 
         return (
             <Segment.Group>
@@ -72,15 +77,17 @@ class QuestionPage extends Component {
     }
 }
 
-function mapStateToProps({ users, questions }, props) {
+function mapStateToProps({ authedUser, users, questions }, props) {
 
-    const { id } = props.match.params
+    const id = props.match.params.question_id;
     const question = questions[id];
     const user = users[question.author];
+    const loggedInUser = users[authedUser];
 
     return {
         user,
-        question
+        question,
+        loggedInUser
     };
 }
 

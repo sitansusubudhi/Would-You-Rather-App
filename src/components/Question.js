@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Header, Icon, Item, Label, Segment } from 'semantic-ui-react';
+import { Redirect, withRouter } from 'react-router-dom';
 
 class Question extends Component {
+
+    handleClick = (e) => {
+        e.preventDefault();
+        const { name } = e.target;
+        const { question: { id } } = this.props;
+        
+        this.props.history.push(`/questions/${id}`);
+      
+    }
+
     render() {
 
         const { user, question } = this.props;
@@ -30,7 +41,11 @@ class Question extends Component {
                                 {this.props.answered === true
                                     ? (
                                         <Item.Extra>
-                                            <Button color='green' floated='right'>
+                                            <Button 
+                                                name='resultView'
+                                                color='green' 
+                                                floated='right'
+                                                onClick={this.handleClick} >
                                                 Show Poll Results
                                                <Icon name='right chevron' />
                                             </Button>
@@ -39,7 +54,11 @@ class Question extends Component {
                                     )
                                     : (
                                         <Item.Extra>
-                                            <Button color='black' floated='right'>
+                                            <Button 
+                                                name='questionView'
+                                                color='black' 
+                                                floated='right'
+                                                onClick={this.handleClick} >
                                                 View Poll
                                             <Icon name='right chevron' />
                                             </Button>
@@ -66,4 +85,4 @@ function mapStateToProps({ users, questions }, { id }) {
     };
 }
 
-export default connect(mapStateToProps)(Question)
+export default withRouter(connect(mapStateToProps)(Question));
