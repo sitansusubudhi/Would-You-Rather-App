@@ -7,7 +7,7 @@ export function receiveUsers (users) {
         type: RECEIVE_USERS,
         users,
     }
-}
+};
 
 export function addUserQuestion({author, id}) {
     return {
@@ -15,7 +15,7 @@ export function addUserQuestion({author, id}) {
         authedUser: author,
         id,
     }
-}
+};
 
 export function setUserAnswer({authedUser, qid, answer}) {
     return {
@@ -24,4 +24,4 @@ export function setUserAnswer({authedUser, qid, answer}) {
         qid,
         answer
     }
-}
+};

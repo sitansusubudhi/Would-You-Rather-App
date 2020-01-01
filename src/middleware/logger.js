@@ -5,6 +5,6 @@ const logger = (store) => (next) => (action) => {
     console.log('The new state: ', store.getState());
     console.groupEnd();
     return result;
-}
+};
 
 export default logger;

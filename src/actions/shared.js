@@ -15,4 +15,4 @@ export function handleInitialData() {
             })
             .then(() => dispatch(hideLoading()));
     }
-}
+};

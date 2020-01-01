@@ -12,7 +12,7 @@ export function receiveQuestions(questions) {
         type: RECEIVE_QUESTIONS,
         questions,
     }
-}
+};
 
 function addQuestion(question) {
     return {
@@ -33,11 +33,11 @@ export function handleAddQuestion({ author, optionOneText, optionTwoText }) {
         })
         .then((question) => {
             dispatch(addQuestion(question));
-            dispatch(addUserQuestion(question));
+            dispatch(addUserQuestion(question)); // dispatching addUserQuestion action creator to update question in users part of state as well
         })
-        .then(() => dispatch(hideLoading()))
+        .then(() => dispatch(hideLoading()));
     }
-}
+};
 
 export function setQuestionAnswer({authedUser, qid, answer}) {
     return {
@@ -46,14 +46,14 @@ export function setQuestionAnswer({authedUser, qid, answer}) {
         qid,
         answer
     }
-}
+};
 
 export function handleSetQuestionAnswer({authedUser, qid, answer}) {
     return (dispatch) => {
 
         dispatch(showLoading());
         dispatch(setQuestionAnswer({authedUser, qid, answer}));
-        dispatch(setUserAnswer({authedUser, qid, answer}));
+        dispatch(setUserAnswer({authedUser, qid, answer})); // dispatching setUserAnswer action creator to set question's answer in users part of state as well
 
         return saveQuestionAnswer({
             authedUser,
@@ -66,7 +66,7 @@ export function handleSetQuestionAnswer({authedUser, qid, answer}) {
         })
         .then(() => dispatch(hideLoading()));
     }
-}
+};
 
 
 
