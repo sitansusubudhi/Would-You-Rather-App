@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Divider, Header, Icon, Item, Segment } from 'semantic-ui-react';
 import ResultPage from './ResultPage';
+import NoMatchPage from './NoMatchPage';
 
 class QuestionPage extends Component {
     state = {
@@ -27,7 +28,7 @@ class QuestionPage extends Component {
         const { optionOneActive, optionTwoActive } = this.state;
         const { user, question, loggedInUser } = this.props;
         if (question === null) {
-            return <p>This question doesn't exist</p>
+            return <NoMatchPage />;
         }
 
         const { author, timestamp, id, optionOne, optionTwo } = question;
@@ -80,9 +81,19 @@ class QuestionPage extends Component {
 function mapStateToProps({ authedUser, users, questions }, props) {
 
     const id = props.match.params.question_id;
+    const loggedInUser = users[authedUser];
+
+    if (!(id in questions)) {
+        return {
+            user: null,
+            question: null,
+            loggedInUser
+        }
+    }
+
     const question = questions[id];
     const user = users[question.author];
-    const loggedInUser = users[authedUser];
+    
 
     return {
         user,
