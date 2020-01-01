@@ -15,14 +15,14 @@ class NewPoll extends Component {
         optionOneValue: '',
         optionTwoValue: '',
         toHome: false,
-    }
+    };
 
     handleChange = (e, { value }) => {
         const { name } = e.target;
         this.setState(() => ({
             [name]: value
-        }))
-    }
+        }));
+    };
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -36,8 +36,8 @@ class NewPoll extends Component {
         this.setState((prevState) => ({
             ...prevState,
             toHome: true,
-        }))
-    }
+        }));
+    };
 
 
     render() {
@@ -45,21 +45,23 @@ class NewPoll extends Component {
         const { optionOneValue, optionTwoValue, toHome } = this.state;
 
         if (toHome === true) {
-            return <Redirect to='/' />
+            return <Redirect to='/' />;
         }
         return (
             <Segment attached>
                 <Message
                     header='Create a new poll'
-                    size='large'
-                />
+                    size='large'/>
                 <Message info>
                     <p>Fill out the form below to create a new poll</p>
                 </Message>
+
                 <Form className='fluid segment' onSubmit={this.handleSubmit}>
                     <Header as='h2' icon textAlign='center'>
                         <Icon name='question' circular />
-                        <Header.Content>Would you rather</Header.Content>
+                        <Header.Content>
+                            Would you rather
+                        </Header.Content>
                     </Header>
                     <Form.Group widths='equal'>
                         <Form.Input
@@ -70,8 +72,7 @@ class NewPoll extends Component {
                             className='center'
                             placeholder='Enter option one text here'
                             onChange={this.handleChange}
-                            value={optionOneValue}
-                        />
+                            value={optionOneValue} />
                         <Form.Input
                             name='optionTwoValue'
                             fluid
@@ -80,17 +81,15 @@ class NewPoll extends Component {
                             className='center'
                             placeholder='Enter option two text here'
                             onChange={this.handleChange}
-                            value={optionTwoValue}
-                        />
+                            value={optionTwoValue} />
                     </Form.Group>
                     <Form.Button
                         fluid
                         color='black'
                         disabled={optionOneValue.trim() === '' || optionTwoValue.trim() === ''}>
                         Submit
-                </Form.Button>
+                    </Form.Button>
                 </Form>
-
             </Segment>
         );
     }

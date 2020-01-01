@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Header, Item, Label, Progress, Segment } from 'semantic-ui-react';
+import {
+    Card,
+    Header,
+    Item,
+    Label,
+    Progress,
+    Segment
+} from 'semantic-ui-react';
 
 
 const UserOptionLabel = () => (
-    <Label as='a' color='blue' attached='bottom right'>
+    <Label 
+        as='a'
+        color='blue'
+        attached='bottom right'>
         Your choice
     </Label>
 );
 
 class ResultPage extends Component {
-
 
     render() {
 
@@ -32,7 +41,7 @@ class ResultPage extends Component {
                 <Segment>
                     <Header as='h3'>
                         {name} asks:
-                </Header>
+                    </Header>
                 </Segment>
                 <Segment>
                     <Item.Group divided>
@@ -41,20 +50,23 @@ class ResultPage extends Component {
                             <Item.Content verticalAlign='middle'>
                                 <Item.Header>
                                     Results:
-                            </Item.Header>
+                                </Item.Header>
                                 <Item.Description>
                                     <Card.Group centered stackable>
                                         <Card fluid>
                                             <Card.Content>
                                                 <Card.Header textAlign='center'>
                                                     Would you rather {optionOne} ?
-                                            </Card.Header>
+                                                </Card.Header>
 
                                                 <Segment>
                                                     {userAnswer === 'optionOne' && <UserOptionLabel />}
-                                                    <Progress percent={optionOnePercent} color='green' progress>
+                                                    <Progress 
+                                                        percent={optionOnePercent} 
+                                                        color='green' 
+                                                        progress>
                                                         {optionOneVotes} out of {totalVotes} votes
-                                                </Progress>
+                                                    </Progress>
                                                 </Segment>
                                             </Card.Content>
                                         </Card>
@@ -62,12 +74,15 @@ class ResultPage extends Component {
                                             <Card.Content>
                                                 <Card.Header textAlign='center'>
                                                     Would you rather {optionTwo} ?
-                                            </Card.Header>
+                                                </Card.Header>
                                                 <Segment>
                                                     {userAnswer === 'optionTwo' && <UserOptionLabel />}
-                                                    <Progress percent={optionTwoPercent} color='green' progress>
+                                                    <Progress 
+                                                        percent={optionTwoPercent}
+                                                        color='green'
+                                                        progress>
                                                         {optionTwoVotes} out of {totalVotes} votes
-                                                </Progress>
+                                                    </Progress>
                                                 </Segment>
                                             </Card.Content>
                                         </Card>
@@ -78,7 +93,6 @@ class ResultPage extends Component {
                     </Item.Group>
                 </Segment>
             </Segment.Group>
-
         );
     }
 }
@@ -107,4 +121,4 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
     };
 }
 
-export default connect(mapStateToProps)(ResultPage)
+export default connect(mapStateToProps)(ResultPage);

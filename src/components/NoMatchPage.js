@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { Header, Icon, Segment, Button } from 'semantic-ui-react';
+import { 
+    Header,
+    Icon,
+    Segment,
+    Button
+} from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
 class NoMatchPage extends Component {
@@ -27,6 +32,6 @@ class NoMatchPage extends Component {
             </Segment>
         );
     }
-}
+};
 
 export default withRouter(NoMatchPage);

@@ -13,7 +13,7 @@ import LoadingBar from 'react-redux-loading';
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
+    this.props.dispatch(handleInitialData());
   }
 
   render() {
@@ -27,34 +27,34 @@ class App extends Component {
               : this.props.loading === true
                 ? null
                 : <div>
-                  <NavMenu />
-                  <Switch>
-                    <Route path="/" exact>
-                      <Dashboard />
-                    </Route>
-                    <Route path='/questions/:question_id' component={QuestionPage} />
-                    <Route path="/add">
-                      <NewPoll />
-                    </Route>
-                    <Route path="/leaderboard">
-                      <Leaderboard />
-                    </Route>
-                    <Route>
-                      <NoMatchPage />
-                    </Route>
-                  </Switch>
-                </div>}
-          </div>
+                    <NavMenu />
+                    <Switch>
+                      <Route path="/" exact>
+                        <Dashboard />
+                      </Route>
+                      <Route path='/questions/:question_id' component={QuestionPage} />
+                      <Route path="/add">
+                        <NewPoll />
+                      </Route>
+                      <Route path="/leaderboard">
+                        <Leaderboard />
+                      </Route>
+                      <Route>
+                        <NoMatchPage />
+                      </Route>
+                    </Switch>
+                  </div>}
+            </div>
         </Fragment>
       </Router>
     )
   }
-}
+};
 
 function mapStateToProps({ authedUser }) {
   return {
     userNotLogged: authedUser === null
-  }
+  };
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(App);

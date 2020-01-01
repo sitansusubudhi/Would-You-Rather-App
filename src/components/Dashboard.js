@@ -10,7 +10,7 @@ class Dashboard extends Component {
     const { authedUser, users, questions } = this.props;
    
     if (!authedUser) {
-      return <Redirect to='/' />
+      return <Redirect to='/' />;
     }
     
     const answeredQuestions = Object.keys(users[authedUser].answers);
@@ -20,20 +20,37 @@ class Dashboard extends Component {
     // console.log('Answered in Dashboard' , answeredQuestions);
 
     const panes = [
-      { menuItem: 'Unanswered Questions', render: () => <Tab.Pane><UnansweredQs unansweredQuestions={unansweredQuestions} /></Tab.Pane> },
-      { menuItem: 'Answered Questions', render: () => <Tab.Pane><AnsweredQs answeredQuestions={answeredQuestions} /></Tab.Pane> }
-    ]
+      { 
+        menuItem: 'Unanswered Questions',
+        render: () => 
+          <Tab.Pane>
+            <UnansweredQs unansweredQuestions={unansweredQuestions} />
+          </Tab.Pane> 
+      },
+      { 
+        menuItem: 'Answered Questions',
+        render: () => 
+          <Tab.Pane>
+            <AnsweredQs answeredQuestions={answeredQuestions} />
+          </Tab.Pane>
+      }
+    ];
 
     return (
       <div>
         <Tab
-          menu={{ fluid: true, pointing: true, vertical: true, tabular: true }}
+          menu={{ 
+            fluid: true,
+            pointing: true,
+            vertical: true,
+            tabular: true
+          }}
           panes={panes}
         />
       </div>
     )
   }
-}
+};
 
 function mapStateToProps({ authedUser, users, questions }) {
 
@@ -42,7 +59,7 @@ function mapStateToProps({ authedUser, users, questions }) {
     users,
     questions: Object.keys(questions)
       .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
-  }
+  };
 }
 
-export default connect(mapStateToProps)(Dashboard) 
+export default connect(mapStateToProps)(Dashboard);

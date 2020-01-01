@@ -15,7 +15,6 @@ const UnansweredQs = (props) => {
             ))}
           </ul>
         </div>
-
     );
 };
 

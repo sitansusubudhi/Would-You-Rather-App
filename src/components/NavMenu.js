@@ -6,10 +6,16 @@ import { setAuthedUser } from '../actions/authedUser';
 import { Redirect, withRouter } from 'react-router-dom';
 
 class NavMenu extends Component {
-    state = { activeItem: '' }
+    state = { 
+        activeItem: ''
+    };
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
+    handleItemClick = (e, { name }) => {
+        this.setState({ 
+            activeItem: name 
+        });
+    };
+        
     handleAuthUserLogout = e => {
         e.preventDefault();
         this.props.dispatch(setAuthedUser(null));
@@ -21,7 +27,7 @@ class NavMenu extends Component {
         const { authedUser, users } = this.props;
         
         if (!authedUser) {
-            return <Redirect to='/' />
+            return <Redirect to='/' />;
         }
         
         return (
@@ -31,18 +37,16 @@ class NavMenu extends Component {
                         <Menu.Item
                             name='home'
                             as={NavLink} to="/" exact
-                            onClick={this.handleItemClick}
-                        />
+                            onClick={this.handleItemClick} />
                         <Menu.Item
                             name='new poll'
                             as={NavLink} to="/add"
-                            onClick={this.handleItemClick}
-                        />
+                            onClick={this.handleItemClick} />
                         <Menu.Item
                             name='leaderboard'
                             as={NavLink} to="/leaderboard"
-                            onClick={this.handleItemClick}
-                        />
+                            onClick={this.handleItemClick} />
+
                         <Menu.Menu position='right'>
                             <Menu.Item>
                                 Hello, {users[authedUser].name}
@@ -52,15 +56,14 @@ class NavMenu extends Component {
                             <Menu.Item
                                 name='logout'
                                 active={activeItem === 'logout'}
-                                onClick={this.handleAuthUserLogout}
-                            />
+                                onClick={this.handleAuthUserLogout} />
                         </Menu.Menu>
                     </Menu>
                 </Segment>
             </Fragment>
         )
     }
-}
+};
 
 function mapStateToProps({ authedUser, users }) {
 

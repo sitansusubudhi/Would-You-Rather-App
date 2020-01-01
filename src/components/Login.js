@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { Dropdown, Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { 
+    Dropdown,
+    Button,
+    Form,
+    Grid,
+    Header,
+    Message,
+    Segment
+} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
@@ -7,21 +15,21 @@ import { setAuthedUser } from '../actions/authedUser';
 class Login extends Component {
     state = {
         value: ''
-    }
+    };
 
     handleChange = (e, { value }) => {
         this.setState(() => ({
             value
-        }))
-    }
+        }));
+    };
 
     handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        const { value } = this.state
-        const { dispatch } = this.props
-        dispatch(setAuthedUser(value))
-    }
+        const { value } = this.state;
+        const { dispatch } = this.props;
+        dispatch(setAuthedUser(value));
+    };
 
     render() {
         const { users } = this.props;
@@ -61,8 +69,7 @@ class Login extends Component {
                                     selection
                                     onChange={this.handleChange} 
                                     value={value}
-                                    options={userOptions}
-                                />
+                                    options={userOptions} />
                             </Form.Field>
                             <Button 
                                 color='black' 
@@ -76,12 +83,12 @@ class Login extends Component {
             </Grid>
         );
     }
-}
+};
 
 function mapStateToProps({ users }) {
     return {
         users
-    }
+    };
 }
 
 export default connect(mapStateToProps)(Login);

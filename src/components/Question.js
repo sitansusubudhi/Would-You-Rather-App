@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Header, Icon, Item, Label, Segment } from 'semantic-ui-react';
+import {
+    Button,
+    Header,
+    Icon,
+    Item,
+    Label,
+    Segment
+} from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
 class Question extends Component {
@@ -11,8 +18,7 @@ class Question extends Component {
         const { question: { id } } = this.props;
         
         this.props.history.push(`/questions/${id}`);
-      
-    }
+    };
 
     render() {
 
@@ -73,7 +79,7 @@ class Question extends Component {
             </Segment.Group>
         );
     }
-}
+};
 
 function mapStateToProps({ users, questions }, { id }) {
     const question = questions[id];

@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Divider, Header, Icon, Item, Segment } from 'semantic-ui-react';
+import {
+    Button,
+    Divider,
+    Header,
+    Icon,
+    Item,
+    Segment
+} from 'semantic-ui-react';
 import ResultPage from './ResultPage';
 import NoMatchPage from './NoMatchPage';
 import { handleSetQuestionAnswer } from '../actions/questions';
@@ -9,20 +16,20 @@ class QuestionPage extends Component {
     state = {
         optionOneActive: false,
         optionTwoActive: false
-    }
+    };
     handleClickOptionOne = () => {
         this.setState((prevState) => ({
             optionOneActive: prevState.optionOneActive ? false : true,
             optionTwoActive: prevState.optionTwoActive ? false : false
         }))
-    }
+    };
 
     handleClickOptionTwo = () => {
         this.setState((prevState) => ({
             optionOneActive: prevState.optionOneActive ? false : false,
             optionTwoActive: prevState.optionTwoActive ? false : true
         }))
-    }
+    };
 
     handleResult = (e) => {
         e.preventDefault();
@@ -45,8 +52,7 @@ class QuestionPage extends Component {
                 answer: result
             }));
         }
-
-    }
+    };
 
     render() {
 
@@ -77,7 +83,9 @@ class QuestionPage extends Component {
 
                             <Item.Content verticalAlign='middle'>
                                 <Segment textAlign='center'>
-                                    <Header as='h3'>Would you rather .. </Header>
+                                    <Header as='h3'>
+                                        Would you rather .. 
+                                    </Header>
 
                                     <Divider section />
                                     <Button.Group size='large'>
@@ -97,10 +105,8 @@ class QuestionPage extends Component {
                                     </Button>
                                 </Item.Extra>
                             </Item.Content>
-                            
                         </Item>
                     </Item.Group>
-                    
                 </Segment>
             </Segment.Group>
         );
@@ -131,4 +137,4 @@ function mapStateToProps({ authedUser, users, questions }, props) {
     };
 }
 
-export default connect(mapStateToProps)(QuestionPage)
+export default connect(mapStateToProps)(QuestionPage);
