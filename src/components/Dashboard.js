@@ -7,20 +7,20 @@ import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
   render() {
-    const { authedUser, users, questions } = this.props;
+    const { authedUser, users, questions } = this.props;  // Destructuring to obtain all variables passed as props
    
+    // If authedUser is not set, redirect user to Login page.
     if (!authedUser) {
       return <Redirect to='/' />;
     }
     
     const answeredQuestions = Object.keys(users[authedUser].answers);
-    const unansweredQuestions = questions.filter(question => answeredQuestions.indexOf(question) === -1);
+    // Sorted by most recently created
+    const unansweredQuestions = questions.filter(question => answeredQuestions.indexOf(question) === -1); 
     const answeredQuestionsSorted = questions.filter(question => unansweredQuestions.indexOf(question) === -1);
 
-    // console.log('Questions in Dashboard' , questions);
-    // console.log('Unanswered in Dashboard' , unansweredQuestions);
-    // console.log('Answered in Dashboard' , answeredQuestionsSorted);
-
+    // Show the unansweredQuestions in Unanswered Questions Tab
+    // Show the answeredQuestionsSorted in Answered Questions Tab
     const panes = [
       { 
         menuItem: 'Unanswered Questions',
@@ -40,6 +40,9 @@ class Dashboard extends Component {
 
     return (
       <div>
+        {/**
+         * Populate the panes attribute of Tab Component with values obtained from props.
+         */}
         <Tab
           menu={{ 
             fluid: true,
@@ -54,6 +57,16 @@ class Dashboard extends Component {
   }
 };
 
+/**
+ * @description Returns authedUser, users and questions as props to the App Component.
+ * @param {object} state - the current state of the Redux store
+ * @param {string} state.authedUser - the state object is destructured to provide the 'authedUser'
+ * @param {object} state.users - the state object is destructured to provide all the users present in the database.
+ * @param {object} state.questions - the state object is destructured to provide all the questions present in the database.
+ * @returns {object} object -  The plain JS object merged into component's props.
+ * @returns {object} object.users - Return users object from the state
+ * @returns {string[]} object.questions - Array of question ids sorted by most recently created.
+ */
 function mapStateToProps({ authedUser, users, questions }) {
 
   return {
@@ -64,4 +77,5 @@ function mapStateToProps({ authedUser, users, questions }) {
   };
 }
 
+// Connects the Dashboard component to the Redux store. 
 export default connect(mapStateToProps)(Dashboard);

@@ -11,12 +11,22 @@ import { handleAddQuestion } from '../actions/questions';
 import { Redirect } from "react-router-dom";
 
 class NewPoll extends Component {
+     /**
+     * optionOneValue - The text value from Option one input
+     * optionTwoValue - The text value from Option two input
+     * toHome - Boolean value (Initial value - false). If true, Redirect user to show Dashboard view
+     */
     state = {
         optionOneValue: '',
         optionTwoValue: '',
         toHome: false,
     };
 
+    /**
+     * @description Set the text value for any change of text in Option one input or Option two input.
+     * @param {object} e - event object
+     * @param {string} object.value - Contains text of the selected option input
+     */
     handleChange = (e, { value }) => {
         const { name } = e.target;
         this.setState(() => ({
@@ -24,15 +34,22 @@ class NewPoll extends Component {
         }));
     };
 
+    /**
+     * @description Saves the question with option values to the database. Sets toHome to true to show Dashboard view.
+     * @param {object} e - event object
+     */
     handleSubmit = (e) => {
         e.preventDefault();
         const { authedUser, dispatch } = this.props;
         const { optionOneValue, optionTwoValue } = this.state;
+
+        // Allows user to save Question by dispatching handleAddQuestion action creator.
         dispatch(handleAddQuestion({
             author: authedUser,
             optionOneText: optionOneValue,
             optionTwoText: optionTwoValue
         }));
+        // Update toHome property in state
         this.setState((prevState) => ({
             ...prevState,
             toHome: true,
@@ -42,8 +59,9 @@ class NewPoll extends Component {
 
     render() {
 
-        const { optionOneValue, optionTwoValue, toHome } = this.state;
+        const { optionOneValue, optionTwoValue, toHome } = this.state; // Destructuring to obtain variables from state
 
+        // if toHome is set, redirect user to Dashboard view
         if (toHome === true) {
             return <Redirect to='/' />;
         }
@@ -83,6 +101,9 @@ class NewPoll extends Component {
                             onChange={this.handleChange}
                             value={optionTwoValue} />
                     </Form.Group>
+                    {/**
+                     * The button will be disabled if any one of the options is blank or contains only spaces.
+                     */}
                     <Form.Button
                         fluid
                         color='black'
@@ -95,14 +116,19 @@ class NewPoll extends Component {
     }
 }
 
-function mapStateToProps({ authedUser, users }) {
-
-    const { avatarURL } = users[authedUser];
+/**
+ * @description Returns authedUser part of state from Redux store
+ * @param {object} state - the current state of the Redux store
+ * @param {string} state.authedUser - the state object is destructured to provide the 'authedUser'
+ * @returns {object} object -  The plain JS object merged into component's props.
+ * @param {string} state.authedUser - Return authedUser value from the state
+ */
+function mapStateToProps({ authedUser }) {
 
     return {
         authedUser,
-        avatarURL
     };
 }
 
+// Connects the NewPoll component to the Redux store.
 export default connect(mapStateToProps)(NewPoll);
