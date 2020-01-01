@@ -15,9 +15,11 @@ class Dashboard extends Component {
     
     const answeredQuestions = Object.keys(users[authedUser].answers);
     const unansweredQuestions = questions.filter(question => answeredQuestions.indexOf(question) === -1);
+    const answeredQuestionsSorted = questions.filter(question => unansweredQuestions.indexOf(question) === -1);
+
     // console.log('Questions in Dashboard' , questions);
     // console.log('Unanswered in Dashboard' , unansweredQuestions);
-    // console.log('Answered in Dashboard' , answeredQuestions);
+    // console.log('Answered in Dashboard' , answeredQuestionsSorted);
 
     const panes = [
       { 
@@ -31,7 +33,7 @@ class Dashboard extends Component {
         menuItem: 'Answered Questions',
         render: () => 
           <Tab.Pane>
-            <AnsweredQs answeredQuestions={answeredQuestions} />
+            <AnsweredQs answeredQuestions={answeredQuestionsSorted} />
           </Tab.Pane>
       }
     ];
