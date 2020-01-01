@@ -75,6 +75,7 @@ class NewPoll extends Component {
                         <Form.Input
                             name='optionTwoValue'
                             fluid
+                            inline
                             label='Set option two'
                             className='center'
                             placeholder='Enter option two text here'
