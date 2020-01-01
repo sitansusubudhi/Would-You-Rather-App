@@ -1,10 +1,42 @@
 # Would You Rather Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+The "Would You Rather?" web app lets a user to play the "Would You Rather?" game. The game goes like this: A user is asked a question in the form: "Would you rather [option A] or [option B] ?". Answering "neither" or "both" is against the rules.
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+Users will be able to create new questions, see which questions they haven't answered, see how other people have voted, post questions, and see the ranking of users on the leaderboard.
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+For this application, most of the application’s state is managed by Redux. 
+
+Funcionality to allow a user to register will be developed later.
+
+## View project locally
+
+To view the project in your local machine:
+
+* clone this repository using `git clone `
+* install all project dependencies with `npm install`
+* start the development server with `npm start`
+
+
+## Component Hierarchy
+
+```
+|- App # This component fetches all the initial data. All the routes to different components are defined here.
+|-- Login # This component gets rendered when the user is not logged in or when the user tries to navigate to other links by changing the URL.
+|-- NavMenu # This component contains all the menu items for ease of navigation. It allows the user to switch between Home, New Poll, Leaderboard. Logout functionality is also provided in the same component. 
+|-- NewPoll # This component is rendered at the '/add' page of the web app. It allows the user to create new polls by allowing them to set two options. 
+|-- Leaderboard # This component is rendered at the '/leaderboard' page of the web app. It displays the results of top 3 ranked users. Ranking is calculated on the basis of total score (Polls created + Polls answered)
+|-- NoMatchPage # This component is rendered when the logged in user tries to access a poll which does not exist or when the URL entered does not match with any of the routes already present.
+|-- Dashboard # This component gets rendered at the '/' page of the web app, when the user is logged in. 
+|--- UnansweredQs # This component is displayed by default as a Tab option in the Dashboard View. It displays a list of questions which are not answered yet by the logged in user. These are sorted by timestamp. 
+|--- AnsweredQs # This component is also part of the Dashboard View as a Tab. It displays a list of questions which have been answered by the logged in user. These are also sorted by timestamp. 
+|---- Question # This component is used to display few details of the questions in the AnsweredQs and UnansweredQs list view. Clicking on the button in this component displays the ResultPage or QuestionPage respectively. 
+|----- QuestionPage # This component gets rendered at the '/question/:question_id' page of the web app. The user would be able to select between two options and submit the choice.
+|----- ResultPage # This component gets rendered at the '/question/:question_id' page of the web app, only if the logged in user has already answered the question. User will be able to view their choice and see the poll results of how others have voted.
+```
+
+## Backend Server
+
+For this application, the `_DATA.js` file represents a fake database and methods that let us access the data. 
 
 ## Data
 
@@ -95,6 +127,3 @@ Your code will talk to the database via 4 methods:
 | qid | String | The id of the question that was answered|
 | answer | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"`|
 
-## Contributing
-
-This repository is the starter code for *all* Udacity students. Therefore, we most likely will not accept pull requests. For details, check out [CONTRIBUTING.md](https://github.com/udacity/reactnd-project-would-you-rather-starter/blob/master/CONTRIBUTING.md).
