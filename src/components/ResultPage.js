@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Card, Header, Image, Item, Label, Progress, Segment } from 'semantic-ui-react';
+import { Card, Header, Item, Label, Progress, Segment } from 'semantic-ui-react';
 
 
 const UserOptionLabel = () => (

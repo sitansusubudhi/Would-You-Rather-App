@@ -19,7 +19,7 @@ class Login extends Component {
         e.preventDefault()
 
         const { value } = this.state
-        const { dispatch, users } = this.props
+        const { dispatch } = this.props
         dispatch(setAuthedUser(value))
     }
 

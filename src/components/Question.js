@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Header, Icon, Item, Label, Segment } from 'semantic-ui-react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Question extends Component {
 
     handleClick = (e) => {
         e.preventDefault();
-        const { name } = e.target;
+        // const { name } = e.target;
         const { question: { id } } = this.props;
         
         this.props.history.push(`/questions/${id}`);
@@ -21,7 +21,7 @@ class Question extends Component {
             return <p>This question doesn't exist</p>
         }
 
-        const { author, timestamp, id, optionOne, optionTwo } = question;
+        const { id, optionOne } = question;
         const { name, avatarURL } = user;
 
         return (

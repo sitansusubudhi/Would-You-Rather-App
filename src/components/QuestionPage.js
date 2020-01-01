@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Button, Divider, Header, Icon, Item, Segment } from 'semantic-ui-react';
 import ResultPage from './ResultPage';
 import NoMatchPage from './NoMatchPage';
+import { handleSetQuestionAnswer } from '../actions/questions';
 
 class QuestionPage extends Component {
     state = {
@@ -15,6 +16,7 @@ class QuestionPage extends Component {
             optionTwoActive: prevState.optionTwoActive ? false : false
         }))
     }
+
     handleClickOptionTwo = () => {
         this.setState((prevState) => ({
             optionOneActive: prevState.optionOneActive ? false : false,
@@ -22,6 +24,29 @@ class QuestionPage extends Component {
         }))
     }
 
+    handleResult = (e) => {
+        e.preventDefault();
+        const { optionOneActive, optionTwoActive } = this.state;
+        const { question, loggedInUser, dispatch } = this.props;
+
+        let result;
+        if (optionOneActive) {
+            result = 'optionOne';
+        } else if (optionTwoActive) {
+            result = 'optionTwo';
+        } else {
+            result = '';
+        }
+
+        if (result) {
+            dispatch(handleSetQuestionAnswer({
+                authedUser: loggedInUser.id,
+                qid: question.id,
+                answer: result
+            }));
+        }
+
+    }
 
     render() {
 
@@ -31,7 +56,7 @@ class QuestionPage extends Component {
             return <NoMatchPage />;
         }
 
-        const { author, timestamp, id, optionOne, optionTwo } = question;
+        const { id, optionOne, optionTwo } = question;
         const { name, avatarURL } = user;
 
         if (id in loggedInUser.answers) {
@@ -62,7 +87,11 @@ class QuestionPage extends Component {
                                     </Button.Group>
                                 </Segment>
                                 <Item.Extra>
-                                    <Button disabled={!optionOneActive && !optionTwoActive} color='black' floated='right'>
+                                    <Button 
+                                        disabled={!optionOneActive && !optionTwoActive} 
+                                        color='black' 
+                                        floated='right'
+                                        onClick={this.handleResult}>
                                         Submit
                                         <Icon name='right chevron' />
                                     </Button>
