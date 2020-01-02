@@ -26,7 +26,7 @@ class NoMatchPage extends Component {
                     <Icon name='settings' />
                     404 - Not Found
                     <Header.Subheader>
-                        The page link seems to be broken. Try to log in again.
+                        The page link seems to be broken. Click below to go to Home.
                     </Header.Subheader>
                 </Header>
                 {/**
