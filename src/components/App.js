@@ -38,14 +38,14 @@ class App extends Component {
                      * If no path gets matched, then the NoMatchPage component gets displayed.
                      */}
                     <Switch>
-                      <Route path="/" exact>
+                      <Route path={process.env.PUBLIC_URL + "/"} exact>
                         <Dashboard />
                       </Route>
-                      <Route path='/questions/:question_id' component={QuestionPage} />
-                      <Route path="/add">
+                      <Route path={process.env.PUBLIC_URL + '/questions/:question_id'} component={QuestionPage} />
+                      <Route path={process.env.PUBLIC_URL + "/add"}>
                         <NewPoll />
                       </Route>
-                      <Route path="/leaderboard">
+                      <Route path={process.env.PUBLIC_URL + "/leaderboard"}>
                         <Leaderboard />
                       </Route>
                       <Route>

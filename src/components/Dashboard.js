@@ -11,7 +11,7 @@ class Dashboard extends Component {
    
     // If authedUser is not set, redirect user to Login page.
     if (!authedUser) {
-      return <Redirect to='/' />;
+      return <Redirect to={process.env.PUBLIC_URL + '/'} />;
     }
     
     const answeredQuestions = Object.keys(users[authedUser].answers);

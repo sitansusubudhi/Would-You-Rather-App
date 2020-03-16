@@ -16,7 +16,7 @@ class NoMatchPage extends Component {
     handlePageNoMatch = e => {
         e.preventDefault();
         // history passed as props to current component by using withRouter higher-order component
-        this.props.history.push('/');
+        this.props.history.push(process.env.PUBLIC_URL + '/');
     };
 
     render() {

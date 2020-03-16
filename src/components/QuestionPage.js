@@ -99,7 +99,11 @@ class QuestionPage extends Component {
                 <Segment>
                     <Item.Group divided>
                         <Item>
-                            <Item.Image src={avatarURL} />
+                            {/**
+                             * Prepend . to go back to public directory
+                             * avatarURL = './images/rhaul-v-alva-jCM48W7y6Y8-unsplash.jpg';
+                             */}
+                            <Item.Image src={'.'+ avatarURL} />
 
                             <Item.Content verticalAlign='middle'>
                                 <Segment textAlign='center'>

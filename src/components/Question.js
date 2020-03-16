@@ -23,7 +23,7 @@ class Question extends Component {
         
         // history passed as props to current component by using withRouter higher-order component.
         // The route provided would render either QuestionPage view or ResultPage view.
-        this.props.history.push(`/questions/${id}`);
+        this.props.history.push(`${process.env.PUBLIC_URL}/questions/${id}`);
     };
 
     render() {

@@ -14,7 +14,7 @@ class NavMenu extends Component {
     handleAuthUserLogout = e => {
         e.preventDefault();
         this.props.dispatch(setAuthedUser(null));
-        this.props.history.push('/');
+        this.props.history.push(process.env.PUBLIC_URL + '/');
     };
 
     render() {
@@ -22,7 +22,7 @@ class NavMenu extends Component {
         
         // If authedUser is not set to some truthy value, don't show this component and redirect user to login page
         if (!authedUser) {
-            return <Redirect to='/' />;
+            return <Redirect to={process.env.PUBLIC_URL + '/'} />;
         }
         
         return (
@@ -34,19 +34,19 @@ class NavMenu extends Component {
                          */}
                         <Menu.Item
                             name='home'
-                            as={NavLink} to="/" exact />
+                            as={NavLink} to={process.env.PUBLIC_URL + "/"} exact />
                         {/**
                          * For Menu Option "New Poll", if clicked navigate to New Poll view which is at "/add" route
                          */}
                         <Menu.Item
                             name='new poll'
-                            as={NavLink} to="/add" />
+                            as={NavLink} to={process.env.PUBLIC_URL + "/add"} />
                         {/**
                          * For Menu Option "Leaderboard", if clicked navigate to Leaderboard view present at "/leaderboard" route
                          */}
                         <Menu.Item
                             name='leaderboard'
-                            as={NavLink} to="/leaderboard" />
+                            as={NavLink} to={process.env.PUBLIC_URL + "/leaderboard"} />
 
                         {/**
                          * Display Logged in user's name and avatar to the right side of Navigation Menu.

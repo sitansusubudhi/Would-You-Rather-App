@@ -46,7 +46,11 @@ class ResultPage extends Component {
                 <Segment>
                     <Item.Group divided>
                         <Item>
-                            <Item.Image src={avatar} />
+                             {/**
+                             * Prepend . to go back to public directory
+                             * avatarURL = './images/rhaul-v-alva-jCM48W7y6Y8-unsplash.jpg';
+                             */}
+                            <Item.Image src={'.' + avatar} />
                             <Item.Content verticalAlign='middle'>
                                 <Item.Header>
                                     Results:

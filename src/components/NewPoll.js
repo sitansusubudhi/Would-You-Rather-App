@@ -63,7 +63,7 @@ class NewPoll extends Component {
 
         // if toHome is set, redirect user to Dashboard view
         if (toHome === true) {
-            return <Redirect to='/' />;
+            return <Redirect to={process.env.PUBLIC_URL + '/'} />;
         }
         return (
             <Segment attached>
