@@ -8,6 +8,8 @@ For this application, most of the application’s state is managed by Redux.
 
 Funcionality to allow a user to register will be developed later.
 
+The project is also hosted using GitHub pages at [Would-You-Rather-App](https://sitansusubudhi.github.io/Would-You-Rather-App/)
+
 ## View project locally
 
 To view the project in your local machine:
