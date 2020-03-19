@@ -8,7 +8,7 @@ For this application, most of the application’s state is managed by Redux.
 
 Funcionality to allow a user to register will be developed later.
 
-The project is also hosted using GitHub pages at [Would-You-Rather-App](https://sitansusubudhi.github.io/Would-You-Rather-App/)
+The project is hosted at Netlify at [Would-You-Rather-App-Netlify](https://reactnd-would-you-rather-app.netlify.com/) and also using GitHub pages at [Would-You-Rather-App-GitHub](https://sitansusubudhi.github.io/Would-You-Rather-App/)
 
 ## View project locally
 
